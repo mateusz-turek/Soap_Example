@@ -1,0 +1,92 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://sri4/cases"
+           targetNamespace="http://sri4/cases"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="caseDto">
+        <xs:sequence>
+            <xs:element name="id" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="status" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+            <xs:element name="createdAt" type="xs:date"/>
+            <xs:element name="assignedTo" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="getCasesRequest">
+        <xs:complexType>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCasesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cases" type="tns:caseDto" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCaseByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="caseId" type="xs:decimal"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCaseByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="case" type="tns:caseDto" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addCaseRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="case" type="tns:caseDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addCaseResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="caseId" type="xs:decimal"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCaseByStatusRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="caseStatus" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCaseByStatusResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cases" type="tns:caseDto" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCaseByAssignedToRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="assignedTo" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCaseByAssignedToResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cases" type="tns:caseDto" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
